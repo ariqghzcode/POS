@@ -15,12 +15,12 @@ const pool = new Pool({
   password: '12345',
   host: 'localhost',
   port: 5432,
-  database: 'datadb'
+  database: 'posdb'
 })
 
 var indexRouter = require('./routes/index')(pool);
 var usersRouter = require('./routes/users')(pool);
-var todosRouter = require('./routes/todos')(pool);
+var dashboardRouter = require('./routes/dashboard')(pool);
 
 var app = express();
 
@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/todos', todosRouter);
+app.use('/dashboard', dashboardRouter);
 
 
 // catch 404 and forward to error handler
